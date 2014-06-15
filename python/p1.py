@@ -20,6 +20,16 @@ def third():
             divs.append(x)
     return sum(divs)
 
+
+def fourth():
+    def SumDivisibleBy(n, maxima=999):
+        p = maxima / n
+        return n * (p * (p+1) ) / 2
+
+    return SumDivisibleBy(3) + SumDivisibleBy(5) - SumDivisibleBy(15)
+    
+
+
 if __name__ == "__main__":
     import timeit
     func_list = [locals()[key] for key in locals().keys()
@@ -30,4 +40,4 @@ if __name__ == "__main__":
         print f.__name__ + '()' + spaces + ': ' + str(f()) + ' ',
         print timeit.timeit(f,
                             setup="from __main__ import %s" % (f.__name__),
-                            number=5000) / 5000
+                            number=5000)
