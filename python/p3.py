@@ -25,6 +25,9 @@ def first():
 		if check_prime(fac):
 			a.append(fac)
 	print max(a)
-	
+
 if __name__ == "__main__":
-	first()
+	import timeit
+	print timeit.timeit("first",
+                        setup="from __main__ import %s" % ("first"),
+                        number=5000000)
