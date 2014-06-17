@@ -9,11 +9,11 @@ def factor(n):
 	upper_limit = int(n**0.5)+1
 	for i in range(1, upper_limit):
 		if not n % i:
-			a.append(n)
 			a.append(i)
+			a.append(n // i)
 	return a
 
-def check_prime(n):
+def prime(n):
 	a = factor(n)
 	if len(a) == 2: return True
 	else: 			return False
@@ -22,12 +22,13 @@ def first():
 	#print factor(13195)
 	a = []
 	for fac in factor(600851475143):
-		if check_prime(fac):
+		if prime(fac):
 			a.append(fac)
-	print max(a)
+	return max(a)
 
 if __name__ == "__main__":
+	print factor(600851475143), first()
 	import timeit
 	print timeit.timeit("first",
                         setup="from __main__ import %s" % ("first"),
-                        number=5000000)
+                        number=500000)
