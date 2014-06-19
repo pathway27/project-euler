@@ -7,25 +7,13 @@ numbers 1 to 20?
 from p3 import factor
 import itertools
 
-# Generator with yield
-def multiples(n):
-	num = 1
-	while True:
-		yield n * num
-		num += 1
+from fractions import gcd
 
-def imerge(a, b):
-    for i, j in itertools.izip(a,b):
-        yield i
-        yield j
+def lcm(numbers):
+    return reduce(lambda x, y: (x*y)/gcd(x,y), numbers, 1)
 
 def first():
-	three = itertools.count(1, 6)
-	four = itertools.count(1, 4)
-	t_f = three + four
-	print three.next()
-	#four = multiples(4)
-	
+	print lcm(range(1, 21))
 
 def main():
 	first()
