@@ -1,6 +1,8 @@
 """
 """
 
+from operator import mul
+
 def first():
 	a = """ 73167176531330624919225119674426574742355349194934
 			96983520312774506326239578318016984801869478851843
@@ -26,12 +28,20 @@ def first():
 
 	num_prods = []
 	i = 0
-	while i < len(str(b)):
-		pass
+	while i < len(str(b)) - 13:
+		c = i + 13
+		curr_nums = [int(x) for x in str(b)[i:c]]
+		# print curr_nums,
+		# print ': ',
+		# print reduce(mul, curr_nums, 1)
 
+		num_prods.append(reduce(mul, curr_nums, 1))
+		i += 1
+
+	return max(num_prods)
 
 def main():
-	first()
+	print first()
 
 if __name__ == '__main__':
 	main()
