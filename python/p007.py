@@ -3,7 +3,7 @@ Find the 10001st prime.
 
 """
 
-from p3 import prime
+from p003 import prime
 
 def first():
 	primes = []

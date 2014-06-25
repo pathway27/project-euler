@@ -1,7 +1,7 @@
 """
 
 """
-from p3 import factor
+from p003 import factor
 
 def first():
 	a = []
