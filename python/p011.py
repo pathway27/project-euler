@@ -48,7 +48,22 @@ g = """
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 """
+def seqs(nums, row, col):
+    if row + 4 <= len(nums):                                yield list(nums[i][col] for i in xrange(row, row+4))
+    if col + 4 <= len(nums[row]):                           yield list(nums[row][i] for i in xrange(col, col+4))
+    if row + 4 <= len(nums) and col + 4 <= len(nums[row]):  yield list(nums[row+i][col+i] for i in xrange(0,4))
+    if row + 4 <= len(nums) and col >= 3:                   yield list(nums[row+i][col-i] for i in xrange(0,4))
 
+def product(seq):
+    n = 1
+    for x in seq: n = n * x
+    return n
+
+def list_seqs(nums):
+    for row in xrange(0, len(nums)):
+        for col in xrange(0, len(nums[row])):
+            for seq in seqs(nums, row, col):
+                yield seq
 
 def first():
     
@@ -65,8 +80,11 @@ def first():
 
     return max(products)
 
+def second():
+    return max(product(seq) for seq in list_seqs(nums))
+
 def main():
-    first()
+    print second()
 
 
 if __name__ == '__main__':
