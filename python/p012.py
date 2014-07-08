@@ -20,12 +20,22 @@ What is the value of the first triangle number to have over five hundred divisor
 
 """
 
+from p3 import factor
+
 def triangle_gen(num):
     yield sum(xrange(1, num+1))
 
 def first():
-    for i in range(1, 28):
-        print triangle_gen(i)
+    i = 1
+    while True:
+        gen = triangle_gen(i) 
+        n = gen.next()
+        if len(factor(n)) > 500:
+            print n,
+            print factor(n)
+            break
+        i += 1
+
 
 if __name__ == '__main__':
     first()
