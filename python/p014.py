@@ -15,14 +15,17 @@ def collatz(start, end):
         yield a
 
 def first():
-    big_list = []
+    biggest_list = []
     i = 13
     while i < 1000000:
         a = collatz(i, 1)
         b = a.next()
-        print i
-        big_list.append(b)
+        #print i
+        if len(b) > len(biggest_list):
+            biggest_list = b
         i += 1
+
+    print len(biggest_list), biggest_list
 
 
 if __name__ == "__main__":
