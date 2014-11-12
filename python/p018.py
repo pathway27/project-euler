@@ -18,16 +18,32 @@ TRIANGLE = """
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
 """
 
+TRIANGLE_TEST = """
+3
+7 4
+2 4 6
+8 5 9 3
+"""
+
 def first():
     rows = []
     for i in TRIANGLE.split('\n'):
         rows.append(i.split(' '))
 
-    a = 0
+    total = 0
+    index = 0
     for row in rows[1:-1]:
-      ints = sorted(map(int, row))
-      print ints[-1]
+      if len(row) == 1:
+        total += int(row[0])
+      else:
+        subset = map(int, row[index:index+2])
+        print total
+        if subset[0] > subset[1]:
+          total += subset[0]
+        else:
+          total += subset[1]
+          index += 1
 
-    print a
+    print total
 if __name__ == '__main__':
     first()
