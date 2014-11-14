@@ -24,8 +24,8 @@ TRIANGLE_TEST = """
 2 4 6
 8 5 9 3
 """
-
-def first():
+# doesn't work
+def greedy():
     rows = []
     for i in TRIANGLE.split('\n'):
         rows.append(i.split(' '))
@@ -37,13 +37,34 @@ def first():
         total += int(row[0])
       else:
         subset = map(int, row[index:index+2])
-        print total
+        print subset,
         if subset[0] > subset[1]:
           total += subset[0]
+          print subset[0]
         else:
           total += subset[1]
           index += 1
+          print subset[1]
 
     print total
+
+def recSumAtRow(rowData, rowNum):
+    # iterate over the given row
+    for i in range(len(rowData[rowNum])):
+        # add the largest of the values below-left or below-right
+        rowData[rowNum][i] += max([rowData[rowNum+1][i],rowData[rowNum+1][i+1]])
+    # base case
+    if len(rowData[rowNum])==1: return rowData[rowNum][0]
+    # recursive case
+    else: return recSumAtRow(rowData, rowNum-1)
+
+
+def first():
+  rows = []
+  for i in TRIANGLE.split('\n'):
+      # rows.append([int(j) for j in i.split(' ')])
+      
+  result = recSumAtRow(rows, len(rows)-2) # start at second to last row
+
 if __name__ == '__main__':
     first()
