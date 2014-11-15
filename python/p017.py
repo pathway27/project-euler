@@ -56,5 +56,8 @@ def spell(n, words):
                 break
     return word
 
-if __name__ == "__main__":
+def first():
     print sum(len(word) for n in xrange(1, 1001) for word in spell(n, words))
+
+if __name__ == "__main__":
+    first()
