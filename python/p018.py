@@ -60,6 +60,15 @@ def recSumAtRow(rowData, rowNum):
     # recursive case
     else: return recSumAtRow(rowData, rowNum-1)
 
+def trial():
+  rows = []
+  for i in TRIANGLE_TEST.split('\n')[1:-1]:
+      rows.append([int(j) for j in i.split(' ')])
+  
+  # print(rows)
+  result = recSumAtRow(rows, len(rows)-2) # start at second to last row
+
+  print result
 
 def first():
   rows = []
