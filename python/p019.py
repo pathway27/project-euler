@@ -17,11 +17,15 @@
 #
 import datetime
 
-sum = 0
-for y in range(1,101):
-    for m in range(1,13):
-        d = datetime.date(1900+y, m, 1)
-        if (d.weekday() == 6):  # 6 is sunday
-            sum += 1
-            
-print("answer :", sum)
+def first():
+  sum = 0
+  for y in range(1,101):
+      for m in range(1,13):
+          d = datetime.date(1900+y, m, 1)
+          if (d.weekday() == 6):  # 6 is sunday
+              sum += 1
+              
+  print(sum)
+
+if __name__ == '__main__':
+    first()
